@@ -7,6 +7,9 @@
 """
 
 
+from ks.utils import pipe
+
+
 class Stream(object):
     """
     A stream represents a series of iterables that
