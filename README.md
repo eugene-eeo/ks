@@ -18,8 +18,8 @@ in a sane and Pythonic way.
 ## Usage example
 
 ```python
+from ks.stream import Stream
 from ks.mapping import LazyMap
-from ks.queue import Queue
 
 s = (Stream([1,2,3]) << [4,5,6]).use(str)
 assert ''.join(s) == '123456'

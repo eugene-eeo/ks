@@ -1,8 +1,8 @@
 """
     ks.queue
     ~~~~~~~~
-    Implements a lazy-eager hybrid queue that is
-    internally based on a stream.
+    Implements a lazy FIFO queue that is internally
+    based on a stream.
 """
 
 
