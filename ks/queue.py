@@ -15,7 +15,7 @@ class Queue(Stream):
     by inserting (enqueuing) and poping (dequing).
     """
 
-    def dequeue(self):
+    def pop(self):
         """
         Removes an item from the queue.
         """
@@ -23,7 +23,7 @@ class Queue(Stream):
             return item
         raise ValueError
 
-    def enqueue(self, datum):
+    def push(self, datum):
         """
         Enqueues an item into the queue.
         """
