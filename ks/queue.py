@@ -1,24 +1,30 @@
-from collections import deque
+"""
+    ks.queue
+    ~~~~~~~~
+    Implements a lazy-eager hybrid queue that is
+    internally based on a stream.
+"""
 
 
-class Queue(object):
-    def __init__(self, iterable):
-        self.iterable = iter(iterable)
-        self.tail = deque()
+from ks.stream import Stream
 
-    def enqueue(self, data):
-        self.tail.append(data)
 
-    def deque(self):
-        if self.tail:
-            return self.tail.popleft()
-        try:
-            return next(self.iterable)
-        except StopIteration:
-            raise ValueError
+class Queue(Stream):
+    """
+    A queue is a FIFO stream that is modifiable
+    by inserting (enqueuing) and poping (dequing).
+    """
 
-    def __iter__(self):
-        for item in self.iterable:
-            yield item
-        while self.tail:
-            yield self.tail.popleft()
+    def dequeue(self):
+        """
+        Removes an item from the queue.
+        """
+        for item in self:
+            return item
+        raise ValueError
+
+    def enqueue(self, datum):
+        """
+        Enqueues an item into the queue.
+        """
+        self.extend((datum,))
