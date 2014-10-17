@@ -22,3 +22,10 @@ def test_sequence_iter(seq):
     assert list(seq) == [1, 2, 3]
     seq.extend([1, 2, 3])
     assert list(seq) == ([1, 2, 3] * 2)
+
+
+def test_sequence_index(seq):
+    assert seq.index(2) == 1
+    assert seq.index(3) == 2
+    with raises(ValueError):
+        seq.index(4)

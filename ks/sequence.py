@@ -40,6 +40,8 @@ class Sequence(Stream):
     def __len__(self):
         return len(self.loaded)
 
+    count = len
+
     def __getitem__(self, idx):
         size = len(self)
         if idx >= size:
@@ -53,3 +55,9 @@ class Sequence(Stream):
         for item in self.superclass.__iter__():
             self.loaded.append(item)
             yield item
+
+    def index(self, elem):
+        for index, item in enumerate(self):
+            if item == elem:
+                return index
+        raise ValueError
