@@ -40,7 +40,7 @@ class Sequence(Stream):
     def __len__(self):
         return len(self.loaded)
 
-    count = len
+    count = __len__
 
     def __getitem__(self, idx):
         size = len(self)
