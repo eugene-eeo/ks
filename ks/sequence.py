@@ -57,6 +57,13 @@ class Sequence(Stream):
             yield item
 
     def index(self, elem):
+        """
+        Check for the index of an element, given that
+        the element is within the sequence. Else,
+        raise a ValueError.
+
+        :param elem: The element to index.
+        """
         for index, item in enumerate(self):
             if item == elem:
                 return index
