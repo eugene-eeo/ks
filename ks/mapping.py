@@ -6,12 +6,12 @@
 """
 
 
-from collections import Mapping
+from collections import Mapping as _Map
 
 
-class LazyMap(Mapping):
+class Mapping(_Map):
     """
-    A LazyMap represents a read-only mapping that
+    A Mapping represents a read-only mapping that
     can lazily load the key-value pairs only when
     they are required. It is a subclass of
     ``collections.Mapping``.

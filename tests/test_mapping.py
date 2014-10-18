@@ -1,11 +1,11 @@
 from pytest import fixture
-from ks.mapping import LazyMap
+from ks.mapping import Mapping
 
 
 @fixture
 def d():
     iterable = [('a', 1), ('b', 2)]
-    return LazyMap(iterable)
+    return Mapping(iterable)
 
 
 def test_lazymap_iter(d):

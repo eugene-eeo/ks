@@ -19,12 +19,12 @@ in a sane and Pythonic way.
 
 ```python
 from ks.stream import Stream
-from ks.mapping import LazyMap
+from ks.mapping import Mapping
 
 s = (Stream([1,2,3]) << [4,5,6]).use(str)
 assert ''.join(s) == '123456'
 
-m = LazyMap([(1,2), (2,3), (3,4)])
+m = Mapping([(1,2), (2,3), (3,4)])
 assert m[2] == 3
 assert m[3] == 4
 ```
