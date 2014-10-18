@@ -12,7 +12,8 @@ from ks.stream import Stream
 class Queue(Stream):
     """
     A queue is a FIFO stream that is modifiable
-    by inserting (enqueuing) and poping (dequing).
+    by inserting (enqueuing) and poping (dequing),
+    but only from the end.
     """
 
     def pop(self):
