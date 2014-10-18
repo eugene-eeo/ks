@@ -7,10 +7,11 @@
 """
 
 
+from collections import Sequence as _Seq
 from ks.stream import Stream
 
 
-class Sequence(Stream):
+class Sequence(Stream, _Seq):
     """
     A sequence is a special case of a stream where
     the values can be accessed lazily, but previous
@@ -40,8 +41,6 @@ class Sequence(Stream):
     def __len__(self):
         return len(self.loaded)
 
-    count = __len__
-
     def __getitem__(self, idx):
         size = len(self)
         if idx >= size:
@@ -55,16 +54,3 @@ class Sequence(Stream):
         for item in self.superclass.__iter__():
             self.loaded.append(item)
             yield item
-
-    def index(self, elem):
-        """
-        Check for the index of an element, given that
-        the element is within the sequence. Else,
-        raise a ValueError.
-
-        :param elem: The element to index.
-        """
-        for index, item in enumerate(self):
-            if item == elem:
-                return index
-        raise ValueError
