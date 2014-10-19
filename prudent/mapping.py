@@ -8,9 +8,10 @@
 
 from itertools import chain
 from collections import Mapping as _Map
+from prudent.stream import Stream
 
 
-class Mapping(_Map):
+class Mapping(Stream, _Map):
     """
     A Mapping represents a read-only mapping that
     can lazily load the key-value pairs only when
@@ -18,51 +19,35 @@ class Mapping(_Map):
     ``collections.Mapping``.
     """
 
-    def __init__(self, iterable):
-        """
-        Initialise a mapping instance from a given
-        iterable. Note that the iterable will only
-        be iterated once.
-
-        :param iterable: The iterable.
-        """
-        self.iterable = iter(iterable)
-        self.cache = {}
+    def __init__(self, *args, **kwargs):
+        Stream.__init__(self, *args, **kwargs)
+        self.loaded = {}
 
     def iload(self):
         """
         Iteratively load the key-value pairs of the
         iterable the mapping was instantiated with.
         """
-        for k, value in self.iterable:
-            self.cache[k] = value
+        for k, value in Stream.__iter__(self):
+            self.loaded[k] = value
             yield k, value
 
-    def extend(self, other):
-        """
-        Extends the iterable of the mapping. With a
-        given iterable *other*.
-
-        :param other: The other iterable.
-        """
-        self.iterable = chain(self.iterable, iter(other))
-
     def __getitem__(self, key):
-        if key in self.cache:
-            return self.cache[key]
+        if key in self.loaded:
+            return self.loaded[key]
         for k, value in self.iload():
             if key == k:
                 return value
         raise KeyError
 
     def __iter__(self):
-        for k in self.cache:
+        for k in self.loaded:
             yield k
         for k, _ in self.iload():
             yield k
 
     def __contains__(self, key):
-        return (key in self.cache or
+        return (key in self.loaded or
                 key in (k[0] for k in self.iload()))
 
     def __len__(self):
@@ -70,4 +55,4 @@ class Mapping(_Map):
         Return the current size of the mapping.
         **Not guaranteed to be deterministic.**
         """
-        return len(self.cache)
+        return len(self.loaded)
