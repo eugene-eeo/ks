@@ -6,6 +6,7 @@
 """
 
 
+from itertools import chain
 from collections import Mapping as _Map
 
 
@@ -36,6 +37,9 @@ class Mapping(_Map):
         for k, v in self.iterable:
             self.cache[k] = v
             yield k, v
+
+    def extend(self, other):
+        self.iterable = chain(self.iterable, iter(other))
 
     def __getitem__(self, key):
         if key in self.cache:
