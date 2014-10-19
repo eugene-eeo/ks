@@ -4,10 +4,8 @@ ks
 **ks** is a minimal library that implements lazy
 data structures, mainly meant for functional styled
 programs. Performance and elegance are the concerns
-of the library. **ks** aims to provide a suite of
-fast and easy-to-use datastructures.
-
-## Why?
+of the library, as well as aiming to provide a suite
+of fast and easy-to-use datastructures.
 
 When designing systems in Python that require large
 sets of data to be processed, the builtins are not
@@ -28,3 +26,10 @@ m = Mapping([(1,2), (2,3), (3,4)])
 assert m[2] == 3
 assert m[3] == 4
 ```
+
+Currently implemented datastructures include:
+
+- **Stream** - lazy, extensible iterable
+- **Mapping** - lazy dictionary
+- **Queue** - FIFO queue based on **Stream**
+- **Sequence** - lazy tuple-like **Stream**
