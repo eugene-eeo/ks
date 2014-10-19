@@ -20,8 +20,7 @@ class Sequence(Stream, _Seq):
     """
 
     def __init__(self, *args, **kwargs):
-        self.superclass = super(Sequence, self)
-        self.superclass.__init__(*args, **kwargs)
+        Stream.__init__(self, *args, **kwargs)
         self.loaded = []
 
     def __len__(self):
@@ -37,6 +36,6 @@ class Sequence(Stream, _Seq):
         for item in self.loaded:
             yield item
 
-        for item in self.superclass.__iter__():
+        for item in Stream.__iter__(self):
             self.loaded.append(item)
             yield item

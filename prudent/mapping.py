@@ -34,9 +34,9 @@ class Mapping(_Map):
         Iteratively load the key-value pairs of the
         iterable the mapping was instantiated with.
         """
-        for k, v in self.iterable:
-            self.cache[k] = v
-            yield k, v
+        for k, value in self.iterable:
+            self.cache[k] = value
+            yield k, value
 
     def extend(self, other):
         """
@@ -50,15 +50,15 @@ class Mapping(_Map):
     def __getitem__(self, key):
         if key in self.cache:
             return self.cache[key]
-        for k, v in self.iload():
+        for k, value in self.iload():
             if key == k:
-                return v
+                return value
         raise KeyError
 
     def __iter__(self):
         for k in self.cache:
             yield k
-        for k, v in self.iload():
+        for k, _ in self.iload():
             yield k
 
     def __contains__(self, key):
