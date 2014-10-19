@@ -14,7 +14,7 @@ def test_sequence_getitem(seq):
 
 def test_sequence_len(seq):
     assert len(seq) == 0
-    seq.load(3)
+    seq[2]
     assert len(seq) == 3
 
 
