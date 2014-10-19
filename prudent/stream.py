@@ -53,9 +53,6 @@ class Stream(object):
         :param other: The other iterable.
         """
         self.iterables.append(iter(other))
-        return self
-
-    __lshift__ = extend
 
     def use(self, function):
         """
