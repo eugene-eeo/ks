@@ -29,7 +29,8 @@ class Sequence(Stream, _Seq):
     def load(self, n):
         """
         Load at most *n* elements from the internal
-        iterable.
+        iterable. It does not raise an exception if
+        there isn't enough elements to consume.
 
         :param n: The number of elements to load.
         """
