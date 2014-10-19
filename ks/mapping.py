@@ -39,6 +39,12 @@ class Mapping(_Map):
             yield k, v
 
     def extend(self, other):
+        """
+        Extends the iterable of the mapping. With a
+        given iterable *other*.
+
+        :param other: The other iterable.
+        """
         self.iterable = chain(self.iterable, iter(other))
 
     def __getitem__(self, key):
