@@ -26,11 +26,25 @@ class Sequence(Stream, _Seq):
     def __len__(self):
         return len(self.loaded)
 
+    def load(self, n):
+        """
+        Load at most *n* elements from the internal
+        iterable.
+
+        :param n: The number of elements to load.
+        """
+        iterable = Stream.__iter__(self)
+        for _ in range(n):
+            try:
+                self.loaded.append(next(iterable))
+            except StopIteration:
+                break
+
     def __getitem__(self, idx):
-        for index, item in enumerate(self):
-            if idx == index:
-                return item
-        raise IndexError
+        size = len(self)
+        if idx >= size:
+            self.load((idx + 1) - size)
+        return self.loaded[idx]
 
     def __iter__(self):
         for item in self.loaded:
