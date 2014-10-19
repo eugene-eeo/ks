@@ -1,6 +1,6 @@
 """
-    ks
-    ~~
+    prudent
+    ~~~~~~~
     A minimal library that implements lazy data
     structures, mainly meant for functional styled
     programs.

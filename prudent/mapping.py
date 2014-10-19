@@ -1,6 +1,6 @@
 """
-    ks.mapping
-    ~~~~~~~~~~
+    prudent.mapping
+    ~~~~~~~~~~~~~~~
     Implements a lazy read-only mapping that lazily
     loads the key and value pairs into a dictionary.
 """

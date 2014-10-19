@@ -1,5 +1,5 @@
 from pytest import fixture
-from ks.stream import Stream
+from prudent.stream import Stream
 
 
 @fixture

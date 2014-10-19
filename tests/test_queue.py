@@ -1,4 +1,4 @@
-from ks.queue import Queue
+from prudent.queue import Queue
 from pytest import fixture, raises
 
 

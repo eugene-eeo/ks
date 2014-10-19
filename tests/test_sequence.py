@@ -1,4 +1,4 @@
-from ks.sequence import Sequence
+from prudent.sequence import Sequence
 from pytest import fixture, raises
 
 

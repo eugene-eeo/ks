@@ -1,5 +1,5 @@
 from pytest import fixture
-from ks.mapping import Mapping
+from prudent.mapping import Mapping
 
 
 @fixture

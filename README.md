@@ -1,10 +1,12 @@
-ks
-==
+prudent
+=======
 
-**ks** is a minimal library that implements lazy
-datastructures, i.e. **Stream**, **Queue**, with
-a focus on elegance and performance. The library
-can be used to provide lazily evaluated data for
+> **Prudent:** careful in providing for the future;
+
+**prudent** is a minimal library that implements
+lazy datastructures, i.e. **Stream**, **Queue**,
+with a focus on elegance and performance. It can
+be used to provide lazily evaluated data for
 computationally intensive operations, or for big
 datasets that do not fit in memory.
 

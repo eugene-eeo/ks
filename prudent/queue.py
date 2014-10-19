@@ -1,12 +1,12 @@
 """
-    ks.queue
-    ~~~~~~~~
+    prudent.queue
+    ~~~~~~~~~~~~~
     Implements a lazy FIFO queue that is internally
     based on a stream.
 """
 
 
-from ks.stream import Stream
+from prudent.stream import Stream
 
 
 class Queue(Stream):

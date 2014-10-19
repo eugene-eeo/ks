@@ -1,6 +1,6 @@
 """
-    ks.sequence
-    ~~~~~~~~~~~
+    prudent.sequence
+    ~~~~~~~~~~~~~~~~
     Implements a tuple-like object on top of the
     standard stream class, for cases where the
     values needed to be accessed by index, lazily.
@@ -8,7 +8,7 @@
 
 
 from collections import Sequence as _Seq
-from ks.stream import Stream
+from prudent.stream import Stream
 
 
 class Sequence(Stream, _Seq):
