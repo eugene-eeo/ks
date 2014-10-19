@@ -10,7 +10,7 @@ def d():
 
 def test_mapping_iter(d):
     for _ in range(2):
-        assert list(d) == ['a', 'b']
+        assert set(d) == set('ab')
 
 
 def test_mapping_getitem(d):
