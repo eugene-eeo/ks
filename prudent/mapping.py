@@ -6,7 +6,6 @@
 """
 
 
-from itertools import chain
 from collections import Mapping as _Map
 from prudent.stream import Stream
 
@@ -16,7 +15,7 @@ class Mapping(Stream, _Map):
     A Mapping represents a read-only mapping that
     can lazily load the key-value pairs only when
     they are required. It is a subclass of
-    ``collections.Mapping``.
+    ``collections.Mapping`` and ``Stream``.
     """
 
     def __init__(self, *args, **kwargs):
