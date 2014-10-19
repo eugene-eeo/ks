@@ -2,10 +2,10 @@ ks
 ==
 
 **ks** is a minimal library that implements lazy
-datastructures, i.e. **Stream**s, **Queue**s, etc.
-with a focus on elegance and performance. The library
+datastructures, i.e. **Stream**, **Queue**, with
+a focus on elegance and performance. The library
 can be used to provide lazily evaluated data for
-computationally intensive operations, or for huge
+computationally intensive operations, or for big
 datasets that do not fit in memory.
 
 Examples of using the provided **Mapping** class, a
