@@ -1,7 +1,7 @@
 prudent
 =======
 
-> **Prudent:** careful in providing for the future;
+> [**prood**-nt] careful in providing for the future;
 
 **prudent** is a minimal library that implements
 lazy datastructures, i.e. **Stream**, **Queue**,

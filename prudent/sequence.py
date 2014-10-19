@@ -24,28 +24,14 @@ class Sequence(Stream, _Seq):
         self.superclass.__init__(*args, **kwargs)
         self.loaded = []
 
-    def load(self, n):
-        """
-        Load at most *n* elements from a stream into
-        the internal cache.
-
-        :param n: The number of elements to load.
-        """
-        it = self.superclass.__iter__()
-        for _ in range(n):
-            try:
-                self.loaded.append(next(it))
-            except StopIteration:
-                break
-
     def __len__(self):
         return len(self.loaded)
 
     def __getitem__(self, idx):
-        size = len(self)
-        if idx >= size:
-            self.load((idx + 1) - size)
-        return self.loaded[idx]
+        for index, item in enumerate(self):
+            if idx == index:
+                return item
+        raise IndexError
 
     def __iter__(self):
         for item in self.loaded:
