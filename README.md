@@ -2,34 +2,25 @@ ks
 ==
 
 **ks** is a minimal library that implements lazy
-data structures, mainly meant for functional styled
-programs. Performance and elegance are the concerns
-of the library, as well as aiming to provide a suite
-of fast and easy-to-use datastructures.
+datastructures, i.e. **Stream**s, **Queue**s, etc.
+with a focus on elegance and performance. The library
+can be used to provide lazily evaluated data for
+computationally intensive operations, or for huge
+datasets that do not fit in memory.
 
-When designing systems in Python that require large
-sets of data to be processed, the builtins are not
-an option and there doesn't seem to be a viable third
-party package available. **ks** aims to fill that gap
-in a sane and Pythonic way.
-
-## Usage example
+Examples of using the provided **Mapping** class, a
+lazy, read-only dictionary-like interface:
 
 ```python
-from ks.stream import Stream
-from ks.mapping import Mapping
+def iterator():
+    for item in range(100):
+        yield item + 1, item
 
-s = (Stream([1,2,3]) << [4,5,6]).use(str)
-assert ''.join(s) == '123456'
-
-m = Mapping([(1,2), (2,3), (3,4)])
-assert m[2] == 3
-assert m[3] == 4
+d = Mapping(iterator())
+assert d[100] == 99
+assert len(d) == 100
 ```
 
-Currently implemented datastructures include:
-
-- **Stream** - lazy, extensible iterable
-- **Mapping** - lazy dictionary
-- **Queue** - FIFO queue based on **Stream**
-- **Sequence** - lazy tuple-like **Stream**
+Note that since the datastructures are lazy, most
+classes that provide ``len`` magic will not be able
+to deterministically return their sizes.
