@@ -32,13 +32,8 @@ class Mapping(Stream, _Map):
             yield k, v
 
     def __getitem__(self, key):
-        if key in self.loaded:
+        if key in self:
             return self.loaded[key]
-
-        khash = hash(key)
-        for k, v in self.iload():
-            if khash == hash(k):
-                return v
         raise KeyError
 
     def __iter__(self):
