@@ -22,7 +22,6 @@ class Stream(object):
         :param iterable: An iterable.
         """
         self.iterables = []
-        self.functions = []
         self.extend(iterable)
 
     def __iter__(self):
