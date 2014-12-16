@@ -36,16 +36,16 @@ class Sequence(Stream, _Seq):
             self.loaded.append(item)
             yield item
 
-    def load(self, n):
+    def load(self, limit):
         """
         Load at most *n* elements from the internal
         iterable. It does not raise an exception if
         there isn't enough elements to consume.
 
-        :param n: The number of elements to load.
+        :param limit: The number of elements to load.
         """
         for idx, _ in enumerate(self.iload(), 1):
-            if idx == n:
+            if idx == limit:
                 break
 
     def __getitem__(self, idx):
