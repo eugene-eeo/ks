@@ -49,7 +49,7 @@ class Mapping(Stream, _Map):
 
     def __contains__(self, key):
         return (key in self.loaded or
-                hash(key) in (hash(k) for k,v in self.iload()))
+                hash(key) in (hash(k) for k, v in self.iload()))
 
     def __len__(self):
         """
