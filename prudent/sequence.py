@@ -7,6 +7,7 @@
 """
 
 
+from itertools import chain
 from collections import Sequence as _Seq
 from prudent.stream import Stream
 
@@ -26,6 +27,11 @@ class Sequence(Stream, _Seq):
     def __len__(self):
         return len(self.loaded)
 
+    def iload(self):
+        for item in Stream.__iter__(self):
+            self.loaded.append(item)
+            yield item
+
     def load(self, n):
         """
         Load at most *n* elements from the internal
@@ -34,12 +40,8 @@ class Sequence(Stream, _Seq):
 
         :param n: The number of elements to load.
         """
-        iterable = Stream.__iter__(self)
-        for _ in range(n):
-            for item in iterable:
-                self.loaded.append(item)
-                break
-            else:
+        for idx, _ in enumerate(self.iload(), 1):
+            if idx == n:
                 break
 
     def __getitem__(self, idx):
@@ -51,7 +53,5 @@ class Sequence(Stream, _Seq):
     def __iter__(self):
         for item in self.loaded:
             yield item
-
-        for item in Stream.__iter__(self):
-            self.loaded.append(item)
+        for item in self.iload():
             yield item
