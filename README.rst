@@ -1,5 +1,7 @@
 Prudent: Lazy Datastructures
-============================
+----------------------------
+
+**Prudent:** careful in providing for the future; provident.
 
 Prudent is a library containing small and simple implementations
 of lazy datastructures. Prudent aims to have a very simple and
