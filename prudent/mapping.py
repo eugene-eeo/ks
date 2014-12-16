@@ -6,6 +6,7 @@
 """
 
 
+from itertools import chain
 from collections import Mapping as _Map
 from prudent.stream import Stream
 
@@ -37,10 +38,10 @@ class Mapping(Stream, _Map):
         return self.loaded[key]
 
     def __iter__(self):
-        for k in self.loaded:
-            yield k
-        for k, _ in self.iload():
-            yield k
+        return chain(
+            self.loaded,
+            (k for k, _ in self.iload()),
+            )
 
     def __contains__(self, key):
         return (key in self.loaded or
