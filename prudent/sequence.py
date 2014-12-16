@@ -51,7 +51,7 @@ class Sequence(Stream, _Seq):
     def __getitem__(self, idx):
         size = len(self)
         if idx >= size:
-            self.load((idx + 1) - size)
+            self.load(idx - (size - 1))
         return self.loaded[idx]
 
     def __iter__(self):
