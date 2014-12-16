@@ -7,6 +7,9 @@
 """
 
 
+from collections import deque
+
+
 class Stream(object):
     """
     A stream represents a series of iterables that
@@ -21,14 +24,14 @@ class Stream(object):
 
         :param iterable: An iterable.
         """
-        self.iterables = []
+        self.iterables = deque()
         self.extend(iterable)
 
     def __iter__(self):
-        for item in self.iterables[:]:
+        for item in list(self.iterables):
             for datum in item:
                 yield datum
-            self.iterables.remove(item)
+            self.iterables.popleft()
 
     def extend(self, other):
         """
