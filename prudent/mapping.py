@@ -32,9 +32,9 @@ class Mapping(Stream, _Map):
             yield k, v
 
     def __getitem__(self, key):
-        if key in self:
-            return self.loaded[key]
-        raise KeyError
+        if key not in self:
+            raise KeyError
+        return self.loaded[key]
 
     def __iter__(self):
         for k in self.loaded:
