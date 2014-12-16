@@ -1,4 +1,4 @@
-from pytest import fixture
+from pytest import fixture, raises
 from prudent.mapping import Mapping
 
 
@@ -16,6 +16,9 @@ def test_mapping_iter(d):
 def test_mapping_getitem(d):
     assert d['a'] == 1
     assert d['b'] == 2
+
+    with raises(KeyError):
+        d['c']
 
 
 def test_mapping_len(d):
