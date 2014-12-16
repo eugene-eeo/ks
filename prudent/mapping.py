@@ -27,18 +27,18 @@ class Mapping(Stream, _Map):
         Iteratively load the key-value pairs of the
         iterable the mapping was instantiated with.
         """
-        for k, value in Stream.__iter__(self):
-            self.loaded[k] = value
-            yield k, value
+        for k, v in Stream.__iter__(self):
+            self.loaded[k] = v
+            yield k, v
 
     def __getitem__(self, key):
         if key in self.loaded:
             return self.loaded[key]
 
         khash = hash(key)
-        for k, value in self.iload():
+        for k, v in self.iload():
             if khash == hash(k):
-                return value
+                return v
         raise KeyError
 
     def __iter__(self):
