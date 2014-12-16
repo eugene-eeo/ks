@@ -51,7 +51,4 @@ class Sequence(Stream, _Seq):
         return self.loaded[idx]
 
     def __iter__(self):
-        for item in self.loaded:
-            yield item
-        for item in self.iload():
-            yield item
+        return chain(self.loaded, self.iload())
