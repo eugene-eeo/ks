@@ -28,6 +28,10 @@ class Sequence(Stream, _Seq):
         return len(self.loaded)
 
     def iload(self):
+        """
+        Iteratively load and store elements that the
+        Sequence object was instantiated with.
+        """
         for item in Stream.__iter__(self):
             self.loaded.append(item)
             yield item
