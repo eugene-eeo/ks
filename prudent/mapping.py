@@ -34,8 +34,10 @@ class Mapping(Stream, _Map):
     def __getitem__(self, key):
         if key in self.loaded:
             return self.loaded[key]
+
+        khash = hash(key)
         for k, value in self.iload():
-            if key == k:
+            if khash == hash(k):
                 return value
         raise KeyError
 
@@ -47,7 +49,7 @@ class Mapping(Stream, _Map):
 
     def __contains__(self, key):
         return (key in self.loaded or
-                key in (k[0] for k in self.iload()))
+                hash(key) in (hash(k) for k,v in self.iload()))
 
     def __len__(self):
         """

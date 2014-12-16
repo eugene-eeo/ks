@@ -36,9 +36,10 @@ class Sequence(Stream, _Seq):
         """
         iterable = Stream.__iter__(self)
         for _ in range(n):
-            try:
-                self.loaded.append(next(iterable))
-            except StopIteration:
+            for item in iterable:
+                self.loaded.append(item)
+                break
+            else:
                 break
 
     def __getitem__(self, idx):

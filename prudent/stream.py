@@ -7,20 +7,6 @@
 """
 
 
-def pipe(functions, data):
-    """
-    Pipe functions onto data, returning a value that
-    is obtained by calling the consecutive functions
-    with the return value of the previous function.
-
-    :param functions: Iterable of functions.
-    :param data: An object to pipe.
-    """
-    for func in functions:
-        data = func(data)
-    return data
-
-
 class Stream(object):
     """
     A stream represents a series of iterables that
@@ -42,7 +28,7 @@ class Stream(object):
     def __iter__(self):
         for item in self.iterables[:]:
             for datum in item:
-                yield pipe(self.functions, datum)
+                yield datum
             self.iterables.remove(item)
 
     def extend(self, other):
@@ -53,15 +39,3 @@ class Stream(object):
         :param other: The other iterable.
         """
         self.iterables.append(iter(other))
-
-    def use(self, function):
-        """
-        Register a function to be used by the stream
-        for piped processing of each of the datum
-        inside the stream.
-
-        :param function: The function to add to the
-            internal pipeline.
-        """
-        self.functions.append(function)
-        return self
