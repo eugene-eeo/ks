@@ -24,3 +24,14 @@ class MappingTest(TestCase):
         assert len(self.mapping) == 0
         self.mapping[3]
         assert len(self.mapping) == 3
+
+    def test_getitem_special(self):
+        class BigInt(int):
+            def __hash__(self):
+                return 1
+
+        mapping = Mapping([(BigInt(4), 1)])
+
+        assert 1 not in mapping
+        assert 4 not in mapping
+        assert BigInt(4) in mapping

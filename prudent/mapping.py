@@ -3,6 +3,10 @@ from collections import Mapping as _Map
 from prudent.stream import Stream
 
 
+def hash_cmp(d1, d2):
+    return hash(d1) == hash(d2) and d1 == d2
+
+
 class Mapping(Stream, _Map):
     def __init__(self, *args, **kwargs):
         Stream.__init__(self, *args, **kwargs)
@@ -24,7 +28,7 @@ class Mapping(Stream, _Map):
     def __contains__(self, key):
         return (
             key in self.cache or
-            hash(key) in (hash(k) for k in self.iload())
+            any(hash_cmp(key, k) for k in self.iload())
         )
 
     def __len__(self):
