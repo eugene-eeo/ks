@@ -22,10 +22,9 @@ class Mapping(Stream, _Map):
         return chain(self.cache, self.iload())
 
     def __contains__(self, key):
-        khash = hash(key)
         return (
             key in self.cache or
-            any((khash == hash(key) and key == k) for k in self.iload())
+            key in self.iload()
         )
 
     def __len__(self):
