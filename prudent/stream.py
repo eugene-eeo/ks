@@ -28,8 +28,8 @@ class Stream(object):
         self.extend(iterable)
 
     def __iter__(self):
-        for item in list(self.iterables):
-            for datum in item:
+        while self.iterables:
+            for datum in self.iterables[0]:
                 yield datum
             self.iterables.popleft()
 
