@@ -1,6 +1,7 @@
 """
     prudent.sequence
     ~~~~~~~~~~~~~~~~
+
     Implements a tuple-like object on top of the
     standard stream class, for cases where the
     values needed to be accessed by index, lazily.

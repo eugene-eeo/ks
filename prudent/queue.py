@@ -1,6 +1,7 @@
 """
     prudent.queue
     ~~~~~~~~~~~~~
+
     Implements a lazy FIFO queue that is internally
     based on a stream.
 """

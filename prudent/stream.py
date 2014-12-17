@@ -1,6 +1,7 @@
 """
     prudent.stream
     ~~~~~~~~~~~~~~
+
     Implements a stream object that retains the state
     of iterations and can be used as the basis for
     lazily evaluated streams.
