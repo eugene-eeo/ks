@@ -7,8 +7,11 @@ class Pipe(Stream):
         self.func = func
 
     def map(self, func):
-        p = self.__class__(self)
-        p.func = func
+        return self.__class__(func, self)
+
+    def __add__(self, other):
+        p = self.__class__(self.func, self)
+        p.extend(other)
         return p
 
     def __iter__(self):
