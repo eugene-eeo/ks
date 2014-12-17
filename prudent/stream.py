@@ -7,7 +7,7 @@ class Stream(object):
         self.extend(iterable)
 
     def __add__(self, other):
-        u = Stream(self)
+        u = self.__class__(self)
         u.extend(other)
         return u
 
