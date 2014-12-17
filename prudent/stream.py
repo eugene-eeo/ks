@@ -24,14 +24,14 @@ class Stream(object):
 
         :param iterable: An iterable.
         """
-        self.iterables = deque()
+        self.queue = deque()
         self.extend(iterable)
 
     def __iter__(self):
-        while self.iterables:
-            for datum in self.iterables[0]:
+        while self.queue:
+            for datum in self.queue[0]:
                 yield datum
-            self.iterables.popleft()
+            self.queue.popleft()
 
     def extend(self, other):
         """
@@ -40,4 +40,4 @@ class Stream(object):
 
         :param other: The other iterable.
         """
-        self.iterables.append(iter(other))
+        self.queue.append(iter(other))
