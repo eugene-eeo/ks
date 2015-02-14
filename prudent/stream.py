@@ -2,7 +2,7 @@ from collections import deque
 
 
 class Stream(object):
-    def __init__(self, iterable=[]):
+    def __init__(self, iterable=()):
         self.queue = deque()
         self.extend(iterable)
 
