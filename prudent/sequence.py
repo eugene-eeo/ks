@@ -24,7 +24,7 @@ class Sequence(Stream, _Seq):
 
     def load(self, limit):
         for idx, _ in enumerate(self.iload(), 1):
-            if idx >= limit:
+            if idx == limit:
                 break
 
     def __len__(self):

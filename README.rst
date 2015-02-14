@@ -3,13 +3,12 @@ Prudent: Lazy Datastructures
 
 **Prudent:** careful in providing for the future; provident.
 
-Prudent is a library containing small and simple implementations
-of lazy datastructures, including a Stream, Mapping, and Sequence.
-Prudent aims to have a very simple and flexible core that developers
-can build more heavy abstractions around. Because of that the API
-is exteremely tiny and only contains a few methods. The other methods
-are often handled by the mixins found in the **collections** library.
-Example code:
+Prudent is a library containing small and simple lazy datastructures,
+including a Stream, Mapping, and Sequence. Prudent aims to have a very
+simple and flexible core that developers can build heavier abstractions
+around. Because of that the API is exteremely tiny and only contains a
+few methods. The other methods are often handled by the mixins found in
+the **collections** library. Example code:
 
 .. code-block:: python
 
