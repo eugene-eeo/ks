@@ -16,5 +16,5 @@ class StreamTest(TestCase):
         assert not list(self.stream)
 
     def test_add(self):
-        u = self.stream + [1, 2, 3]
-        assert list(u) == ([1, 2, 3] * 2)
+        u = self.stream + [1]
+        assert list(u) == [1, 2, 3, 1]
