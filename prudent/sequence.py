@@ -13,6 +13,11 @@ class Sequence(Stream, _Seq):
             self.cache.append(item)
             yield item
 
+    def load(self, limit):
+        for idx, _ in enumerate(self.iload(), 1):
+            if idx == limit:
+                break
+
     def __getitem__(self, idx):
         size = len(self)
         if idx >= size:
@@ -21,11 +26,6 @@ class Sequence(Stream, _Seq):
 
     def __iter__(self):
         return chain(self.cache, self.iload())
-
-    def load(self, limit):
-        for idx, _ in enumerate(self.iload(), 1):
-            if idx == limit:
-                break
 
     def __len__(self):
         return len(self.cache)
