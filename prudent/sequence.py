@@ -13,9 +13,9 @@ class Sequence(Stream, _Seq):
             self.cache.append(item)
             yield item
 
-    def load(self, limit):
+    def load(self, elems):
         for idx, _ in enumerate(self.iload(), 1):
-            if idx == limit:
+            if idx == elems:
                 break
 
     def __getitem__(self, idx):
