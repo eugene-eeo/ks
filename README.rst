@@ -13,4 +13,4 @@ around. Usage example::
                 cache[n-1] + cache[n-2])
 
     cache = Mapping((n, fibo(n)) for n in range(1000))
-    assert f(10) == 55
+    assert fibo(10) == 55
