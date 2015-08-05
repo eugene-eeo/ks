@@ -1,3 +1,4 @@
+from itertools import chain
 from collections import deque
 
 
@@ -14,9 +15,7 @@ class Stream(object):
         self.extend(iterable)
 
     def __add__(self, other):
-        u = self.__class__(self)
-        u.extend(other)
-        return u
+        return self.__class__(chain(self, other))
 
     def __iter__(self):
         while self.queue:
