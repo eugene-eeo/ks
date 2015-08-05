@@ -1,25 +1,16 @@
-Prudent: Lazy Datastructures
-----------------------------
+Prudent
+=======
 
-**Prudent:** careful in providing for the future; provident.
-
-Prudent is a library containing small, lazy data structures,
-including a Stream, Mapping, and Sequence. The aim is to have
-a very simple and flexible core that developers can build heavier
-abstractions around. Because of that the API is exteremely tiny
-and only contains a few methods. The other methods are often
-handled by the mixins found in the **collections** library.
-Example code:
-
-.. code-block:: python
+**Prudent** is a library of small, elegant, and composable
+lazy data structures. The aim is to have a very small and
+flexible core that developers can build heavier abstractions
+around. Usage example::
 
     from prudent import Mapping
-    d = Mapping((k, k+1) for k in range(100))
 
-    assert d[15] == 16
-    assert d[20] == 21
+    def fibo(n):
+        return (n if n == 0 or n == 1 else
+                cache[n-1] + cache[n-2])
 
-Prudent is aimed at functional programs as well as situations
-where datasets are either too large to fit into memory all at
-once or where you need to lazily cache sequential operations
-(a typical example is the recursive fibonacci implementation).
+    cache = Mapping((n, fibo(n)) for n in range(1000))
+    assert f(10) == 55
