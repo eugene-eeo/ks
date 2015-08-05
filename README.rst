@@ -2,9 +2,9 @@ Prudent
 =======
 
 **Prudent** is a library of small, elegant, and composable
-lazy data structures. The aim is to have a very small and
-flexible core that developers can build heavier abstractions
-around. Usage example::
+lazy data structures. The aim is to have a very small, fast,
+focused, and flexible core that developers can build heavier
+abstractions around. Usage example::
 
     from prudent import Mapping
 
