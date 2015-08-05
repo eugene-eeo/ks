@@ -2,6 +2,13 @@ from collections import deque
 
 
 class Stream(object):
+    """
+    This datastructure forms the core of other lazy
+    data structures. You are recommended to subclass
+    this class when making something new, e.g. a
+    lazily loaded set.
+    """
+
     def __init__(self, iterable=()):
         self.queue = deque()
         self.extend(iterable)
@@ -11,10 +18,6 @@ class Stream(object):
         u.extend(other)
         return u
 
-    def __iadd__(self, other):
-        self.extend(other)
-        return self
-
     def __iter__(self):
         while self.queue:
             for datum in self.queue[0]:
@@ -22,4 +25,7 @@ class Stream(object):
             self.queue.popleft()
 
     def extend(self, it):
+        """
+        Extends the current stream in-place.
+        """
         self.queue.append(iter(it))

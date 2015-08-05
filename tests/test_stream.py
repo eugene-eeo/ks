@@ -18,7 +18,3 @@ class StreamTest(TestCase):
     def test_add(self):
         u = self.stream + [1]
         assert list(u) == [1, 2, 3, 1]
-
-    def test_iadd(self):
-        self.stream += [1]
-        assert list(self.stream) == [1, 2, 3, 1]
