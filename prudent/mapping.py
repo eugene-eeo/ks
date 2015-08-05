@@ -29,3 +29,6 @@ class Mapping(Stream, _Map):
 
     def __len__(self):
         return len(self.cache)
+
+    def __add__(self, other):
+        return NotImplemented

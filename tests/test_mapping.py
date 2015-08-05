@@ -25,3 +25,9 @@ class MappingTest(TestCase):
         assert len(self.mapping) == 0
         self.mapping[3]
         assert len(self.mapping) == 3
+
+    def test_add_is_not_supported(self):
+        self.assertRaises(
+            TypeError,
+            lambda: self.mapping + [],
+        )
