@@ -14,6 +14,7 @@ class MappingTest(TestCase):
     def test_contains(self):
         assert 1 in self.mapping
         assert 1 in self.mapping
+        assert 3 in self.mapping
 
     def test_getitem(self):
         assert self.mapping[1] == 2

@@ -13,7 +13,7 @@ class StreamTest(TestCase):
 
     def test_iter(self):
         assert list(self.stream) == [1, 2, 3]
-        assert not list(self.stream)
+        assert list(self.stream) == []
 
     def test_add(self):
         u = self.stream + [1]

@@ -11,6 +11,9 @@ class Stream(object):
         u.extend(other)
         return u
 
+    def __iadd__(self, other):
+        self.extend(other)
+
     def __iter__(self):
         while self.queue:
             for datum in self.queue[0]:
