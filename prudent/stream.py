@@ -13,6 +13,7 @@ class Stream(object):
 
     def __iadd__(self, other):
         self.extend(other)
+        return self
 
     def __iter__(self):
         while self.queue:
