@@ -21,7 +21,7 @@ class MappingTest(TestCase):
         assert self.mapping[3] == 4
         assert self.mapping[2] == 3
 
-    def test_len(self):
+    def test_len_returns_current_size(self):
         assert len(self.mapping) == 0
         self.mapping[3]
         assert len(self.mapping) == 3
