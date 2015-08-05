@@ -4,11 +4,23 @@ from prudent.stream import Stream
 
 
 class Mapping(Stream, _Map):
+    """
+    A lazily filled Mapping built on a stream.
+    The iterable passed to the constructor must
+    be an iterable that yields (key,value) pairs.
+    """
+
     def __init__(self, *args, **kwargs):
         Stream.__init__(self, *args, **kwargs)
         self.cache = {}
 
     def iload(self):
+        """
+        Lazily yields the key-value pairs while
+        storing them into an internal dictionary.
+        Should not care about conflicts- keys that
+        are loaded later override earlier ones.
+        """
         for key, value in Stream.__iter__(self):
             self.cache[key] = value
             yield key
