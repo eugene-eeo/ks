@@ -14,8 +14,8 @@ class Sequence(Stream, _Seq):
             yield item
 
     def load(self, elems):
-        for idx, _ in enumerate(self.iload(), 1):
-            if idx == elems:
+        for count, _ in enumerate(self.iload(), 1):
+            if count == elems:
                 break
 
     def __getitem__(self, idx):

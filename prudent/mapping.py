@@ -13,11 +13,6 @@ class Mapping(Stream, _Map):
             self.cache[key] = value
             yield key
 
-    def __getitem__(self, key):
-        if key not in self:
-            raise KeyError
-        return self.cache[key]
-
     def __iter__(self):
         return chain(self.cache, self.iload())
 
@@ -26,6 +21,11 @@ class Mapping(Stream, _Map):
             key in self.cache or
             key in self.iload()
         )
+
+    def __getitem__(self, key):
+        if key not in self:
+            raise KeyError
+        return self.cache[key]
 
     def __len__(self):
         return len(self.cache)
