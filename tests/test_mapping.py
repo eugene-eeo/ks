@@ -6,7 +6,7 @@ class MappingTest(TestCase):
     def setUp(self):
         self.mapping = Mapping([(1, 2), (2, 3), (3, 4)])
 
-    def test_iter(self):
+    def test_iter_preserves_keys(self):
         keys = [1, 2, 3]
         for _ in range(2):
             assert list(self.mapping) == keys
