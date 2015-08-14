@@ -8,9 +8,6 @@ abstractions around. Usage example::
 
     from prudent import Mapping
 
-    def fibo(n):
-        return (n if n == 0 or n == 1 else
-                cache[n-1] + cache[n-2])
-
-    cache = Mapping((n, fibo(n)) for n in range(1000))
-    assert fibo(10) == 55
+    mapping = Mapping((n, n+1) for n in xrange(1000))
+    assert mapping[99] == 100
+    assert len(mapping) == 99
