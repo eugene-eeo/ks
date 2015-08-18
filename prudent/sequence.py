@@ -5,8 +5,7 @@ from prudent.stream import Stream
 
 class Sequence(Stream, _Seq):
     """
-    Implements an indexable, mutable sequence atop
-    the Stream class.
+    An indexable, mutable sequence atop a Stream.
     """
 
     def __init__(self, *args, **kwargs):
