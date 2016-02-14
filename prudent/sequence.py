@@ -33,9 +33,9 @@ class Sequence(Stream, _Seq):
                 break
 
     def __getitem__(self, idx):
-        size = len(self)
-        if idx >= size:
-            self.load(idx - (size - 1))
+        max_idx = len(self) - 1
+        if idx > max_idx:
+            self.load(idx - max_idx)
         return self.cache[idx]
 
     def __iter__(self):
