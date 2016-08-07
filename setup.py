@@ -6,7 +6,7 @@ setup(
     description='Elegant lazy datastructures for Python',
     long_description=open('README.rst', 'rb').read().decode('utf-8'),
     author='Eeo Jun',
-    author_email='packwolf58@gmail.com',
+    author_email='141bytes@gmail.com',
     url='https://github.com/eugene-eeo/mailthon/',
     classifiers=[
         'Development Status :: 3 - Alpha',
