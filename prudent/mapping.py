@@ -1,6 +1,6 @@
 from itertools import chain
 from collections import Mapping as _Map
-from prudent.stream import Stream
+from .stream import Stream
 
 
 class Mapping(Stream, _Map):

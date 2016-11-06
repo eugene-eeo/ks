@@ -1,6 +1,6 @@
 from itertools import chain
 from collections import Sequence as _Seq
-from prudent.stream import Stream
+from .stream import Stream
 
 
 class Sequence(Stream, _Seq):
