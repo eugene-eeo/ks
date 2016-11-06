@@ -14,22 +14,21 @@ class Sequence(Stream, _Seq):
 
     def iload(self):
         """
-        Lazily yields elements passed either to
-        extend or the constructor while storing
-        them into an internal list. Yields elements
-        which have not been loaded yet.
+        Lazily yields elements passed either to extend or
+        the constructor while storing them into an internal
+        list. Yields elements which have not been loaded yet.
         """
         for item in Stream.__iter__(self):
             self.cache.append(item)
             yield item
 
-    def load(self, elems):
+    def load(self, n):
         """
-        Loads at most *elems* elements into the
-        internal cache. Meant for internal use.
+        Loads at most *n* elements into the internal cache.
+        Meant for internal use.
         """
         for count, _ in enumerate(self.iload(), 1):
-            if count == elems:
+            if count >= n:
                 break
 
     def __getitem__(self, idx):
